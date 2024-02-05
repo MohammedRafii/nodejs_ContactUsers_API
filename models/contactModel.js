@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-const userSchema = new mongoose.Schema({
+const contactSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true
@@ -9,10 +9,15 @@ const userSchema = new mongoose.Schema({
     required: true,
     unique: true
   },
-  password: {
+  phone: {
     type: String,
     required: true,
-    select:false
+    unique: true
+  },
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
   },
   createdAt: {
     type: Date,
@@ -20,4 +25,4 @@ const userSchema = new mongoose.Schema({
   },
 });
 
-export const User = mongoose.model("User", userSchema);
+export const Contact = mongoose.model("Contact", contactSchema);
