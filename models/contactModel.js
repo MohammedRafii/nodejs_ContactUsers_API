@@ -23,6 +23,9 @@ const contactSchema = new mongoose.Schema({
   },
 });
 
+// Create a compound unique index on userId, email, and phone
+contactUserSchema.index({ email: 1 }, { unique: true });
+contactUserSchema.index({ phone: 1 }, { unique: true });
 export const Contact = mongoose.model("Contact", contactSchema);
 
 
