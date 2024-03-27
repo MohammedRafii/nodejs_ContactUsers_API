@@ -6,13 +6,11 @@ const contactSchema = new mongoose.Schema({
   },
   email: {
     type: String,
-    required: true,
-    unique: true
+    required: true
   },
   phone: {
     type: String,
-    required: true,
-    unique: true
+    required: true
   },
   userId: {
     type: mongoose.Schema.Types.ObjectId,
@@ -24,5 +22,5 @@ const contactSchema = new mongoose.Schema({
     default: Date.now
   },
 });
-
+contactSchema.index({ email: 1, phone: 1 }, { unique: true });
 export const Contact = mongoose.model("Contact", contactSchema);
