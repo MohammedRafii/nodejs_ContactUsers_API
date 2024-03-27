@@ -22,5 +22,5 @@ const contactSchema = new mongoose.Schema({
     default: Date.now
   },
 });
-contactSchema.index({ email: 1, phone: 1 }, { unique: true });
+
 export const Contact = mongoose.model("Contact", contactSchema);
