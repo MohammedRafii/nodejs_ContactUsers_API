@@ -3,11 +3,11 @@ const contactSchema = new mongoose.Schema({
   name: { type: String, required: true  },
   email: {
     type: String,
-    required: true
+    required: true, unique: true
   },
   phone: {
     type: String,
-    required: true
+    required: true, unique: true
   },
   userId: {
     type: mongoose.Schema.Types.ObjectId,
