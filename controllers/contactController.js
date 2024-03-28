@@ -3,8 +3,8 @@ import ErrorHandler from "../middlewares/error.js";
 export const add = async (req, res, next) => {
   try {
     const { name, email, phone } = req.body
-    const contactEmail = await Contact.find({userId:req.user._id}).where({email})
-    const contactPhone = await Contact.find({userId:req.user._id}).where({phone})
+    const contactEmail = await Contact.find({userId:req.user._id,email})
+    const contactPhone = await Contact.find({userId:req.user._id,phone})
     if (contactEmail) return next(new ErrorHandler("Contact Email already Exist", 400))
     if (contactPhone) return next(new ErrorHandler("Contact Phone number already Exist", 400))
     await Contact.create({
